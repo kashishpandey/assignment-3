@@ -15,6 +15,11 @@ testingCode
 Makefile
 
 How this program compiles:
+make
+./assignment3.exe testingCode
+
+or
+
 g++ *.cpp
 ./a.out testingCode
 
