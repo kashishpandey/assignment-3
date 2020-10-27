@@ -17,7 +17,7 @@ int main (int argc, char **argv){
   }
 
   string test = argv[1];
-  //checking syntax for another file if user wants
+  //checking syntax for another file if user wants to pass another file through
   while(loop){
     if(output){
       SyntaxChecker* s = new SyntaxChecker();

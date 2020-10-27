@@ -28,19 +28,18 @@ bool SyntaxChecker::delimiters(string file){
   //line count
   int count = 0;
   string line;
-  //reading into a file
   ifstream infile(file);
   while(getline(infile, line)){
        count++;
        //for loop to look at each character in the line
       for(char i : line){
-        //if it's an open delimiter, add the stack
+        //checking for open delimiter- adding to the stack
         if((i == '(') || (i == '{') || (i == '[')){
           if(stack1.isFull()){
             stack1.newStack();
           }
           stack1.push(i);
-        //if it's a closed delimiter, check for errors
+        //closed delimiter- checking for errors
         }
         else if((i == ')') || (i == '}') || (i == ']')){
           //checking if stack is empty
@@ -85,12 +84,14 @@ bool SyntaxChecker::delimiters(string file){
               return false;
             }
           }
+
         }
       }
     }
-    //checking if stack is not empty once its gone through the file 
+    //checking if stack is not empty once its gone through the file
     if(stack1.isEmpty() == false){
-      cout << "Stack is not empty, there's still " << stack1.peek() << " left at the end of the file" << endl;
+      cout << "The stack isn't empty!!" << endl;
+      cout << "Still " << stack1.peek() << " left at the end of the file" << endl;
       return false;
     }
     //checking if stack is empty once its gone through the file

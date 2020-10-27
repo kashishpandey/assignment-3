@@ -9,17 +9,17 @@ class GenStack{
     //overloaded constructor
     // ms = maximum size
     GenStack(int ms);
-
     //destructor
     ~GenStack();
 
-    void newStack();
-    void push(T contents);
-    T pop();
-    T peek();
-
     bool isFull();
     bool isEmpty();
+
+    void newStack();
+
+    T peek();
+    T pop();
+    void push(T contents);
 
     int size;
     int top;
@@ -49,6 +49,18 @@ GenStack<T>::~GenStack(){
   delete myArray;
 }
 
+//returns if true or false -  checking whether stack is full
+template<class T>
+bool GenStack<T>::isFull(){
+  return(top == size-1);
+}
+
+//returns true or false - checking whether stack is empty
+template<class T>
+bool GenStack<T>::isEmpty(){
+  return (top == -1);
+}
+
 //double the size of the stack - if the stack is full
 template<class T>
 void GenStack<T>::newStack(){
@@ -59,28 +71,6 @@ void GenStack<T>::newStack(){
 		newStack[i] = myArray[i];
 	}
   myArray = newStack;
-}
-
-//pushing to top of the stack
-template<class T>
-void GenStack<T>::push(T contents){
-  if(isFull()){
-    cout << "Stack is full!!!" << endl;
-  }
-  else{
-    myArray[++top] = contents;
-  }
-}
-
-//popping top of stack
-template<class T>
-T GenStack<T>::pop(){
-  if(isEmpty()){
-    cout <<"Stack is empty!!!" << endl;
-  }
-  else{
-    return myArray[top--];
-  }
 }
 
 //returning first element of array
@@ -94,14 +84,24 @@ T GenStack<T>::peek(){
   }
 }
 
-//returns if true or false -  checking whether stack is full
+//popping top of stack
 template<class T>
-bool GenStack<T>::isFull(){
-  return(top == size-1);
+T GenStack<T>::pop(){
+  if(isEmpty()){
+    cout <<"The stack is empty!!" << endl;
+  }
+  else{
+    return myArray[top--];
+  }
 }
 
-//returns true or false - checking whether stack is empty
+//pushing to top of the stack
 template<class T>
-bool GenStack<T>::isEmpty(){
-  return (top == -1);
+void GenStack<T>::push(T contents){
+  if(isFull()){
+    cout << "The stack is full!!" << endl;
+  }
+  else{
+    myArray[++top] = contents;
+  }
 }

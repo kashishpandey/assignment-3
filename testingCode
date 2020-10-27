@@ -34,7 +34,7 @@ void DoublyLinkedList::insertBack(int d){
   back = node;
   ++size;
 }
-// intentionally missed opening brace on line 38; once you compile this program it should return: Line 53: Expected { but not found 
+// intentionally missed opening brace on line 38; once you compile this program it should return line 53: Expected an opening curly brace but not found
 int DoublyLinkedList::removeFront(int d)
   ListNode *curr = front;
   if(front->next == NULL){
