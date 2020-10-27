@@ -34,13 +34,13 @@ bool SyntaxChecker::delimiters(string file){
        count++;
        //for loop to look at each character in the line
       for(char i : line){
-        //if it's an open delimiter, add the stack
+        //open delimiter - adding to the stack
         if((i == '(') || (i == '{') || (i == '[')){
           if(stack1.isFull()){
             stack1.newStack();
           }
           stack1.push(i);
-        //if it's a closed delimiter, check for errors
+        //closed delimiter - checking for errors
         }
         else if((i == ')') || (i == '}') || (i == ']')){
           //checking if stack is empty
