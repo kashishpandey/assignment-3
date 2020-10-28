@@ -77,7 +77,7 @@ void GenStack<T>::newStack(){
 template<class T>
 T GenStack<T>::peek(){
   if(isEmpty()){
-    cout <<"Stack is empty!!!" << endl;
+    cout <<"The stack is empty!!!" << endl;
   }
   else{
     return myArray[top];
