@@ -56,7 +56,7 @@ bool SyntaxChecker::delimiters(string file){
             if(i == ']'){
               expected = squareBracket;
             }
-            cout << "Line " << lineCount << ": Expected " << expected << " but it was not found" << endl;
+            cout << "Line " << lineCount << ": Expected " << expected << " but it was not found!" << endl;
             cout << " But not found" << endl;
             return false;
           }
