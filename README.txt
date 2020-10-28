@@ -8,7 +8,7 @@ No known errors
 
 Extra:
 Within my testingCode file I purposely missed an open brace on line 38 to test the code
-Should print - "Line 53: Expected { but not found!" when you compile everything
+Should print - "Line 53: Expected { but it was not found!" when you compile everything
 
 Source files:
 GenStack.h
