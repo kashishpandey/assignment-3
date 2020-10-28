@@ -25,12 +25,11 @@ SyntaxChecker::~SyntaxChecker(){
 
 // checking opening and closing delimiters
 bool SyntaxChecker::delimiters(string file){
-  //line count
-  int count = 0;
+  int lineCount = 0;
   string line;
   ifstream infile(file);
   while(getline(infile, line)){
-       count++;
+       lineCount++;
        //for loop to look at each character in the line
       for(char i : line){
         //checking for open delimiter- adding to the stack
@@ -57,14 +56,15 @@ bool SyntaxChecker::delimiters(string file){
             if(i == ']'){
               expected = squareBracket;
             }
-            cout << "Line " << count << ": Expected " << expected << " but not found" << endl;
+            cout << "Line " << lineCount << ": Expected " << expected << " but it was not found" << endl;
+            cout << " But not found" << endl;
             return false;
           }
           // checking closing parentheses
           else if(i == ')'){
             char current = stack1.pop();
             if(current == squareBracket  || current == curly){
-              cout << "Line " << count << " Expected: " << parentheses << " but found " << current << endl;
+              cout << "Line " << lineCount << " Expected: " << parentheses << " but instead found " << current << endl;
               return false;
             }
           }
@@ -72,7 +72,7 @@ bool SyntaxChecker::delimiters(string file){
           else if(i == '}'){
             char current = stack1.pop();
             if(current == squareBracket || current == parentheses){
-              cout << "Line " << count << ": Expected " << curly  << " but found " << current << endl;
+              cout << "Line " << lineCount << ": Expected " << curly  << " but instead found " << current << endl;
               return false;
             }
           }
@@ -80,18 +80,17 @@ bool SyntaxChecker::delimiters(string file){
           else if(i == ']'){
             char current = stack1.pop();
             if(current == curly || current == parentheses ){
-              cout << "Line " << count << ": Expected " << squareBracket << " but found " << current << endl;
+              cout << "Line " << lineCount << ": Expected " << squareBracket << " but instead found " << current << endl;
               return false;
             }
           }
-
         }
       }
     }
     //checking if stack is not empty once its gone through the file
     if(stack1.isEmpty() == false){
       cout << "The stack isn't empty!!" << endl;
-      cout << "Still " << stack1.peek() << " left at the end of the file" << endl;
+      cout << "Still " << stack1.peek() << " left " << endl;
       return false;
     }
     //checking if stack is empty once its gone through the file
